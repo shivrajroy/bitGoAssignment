@@ -76,16 +76,16 @@ public class APITestCase2 {
         int totalVinCount= countVinfor100.size() + countVinfor200.size() + countVinfor300.size();
         int totalVoutCount = countVoutfor100.size() + countVoutfor200.size() + countVoutfor300.size();
 
-        System.out.println(totalVinCount);
-        System.out.println(totalVoutCount);
+        System.out.println("Total input Count is " + totalVinCount);
+        System.out.println("Total output Count is " + totalVoutCount);
 
         if (totalVoutCount==4 && totalVinCount==5)
         {
-            System.out.println("TestCase2 Passed");
+            System.out.println("Test Case 2 Passed");
         }
         else
         {
-            System.out.println("TestCase2 Failed");
+            System.out.println("Test Case 2 Failed");
         }
 
     }
