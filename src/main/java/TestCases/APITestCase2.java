@@ -21,8 +21,6 @@ public class APITestCase2 {
         RequestSpecification getIndividualIdRequest = RestAssured.given().relaxedHTTPSValidation();
         RequestSpecification ReuestFor100_200_300 = RestAssured.given().relaxedHTTPSValidation();
 
-        APITestData data = new APITestData();
-
         getBlockHashRequest.header("Content-Type", "application/json");
         getBlockHashRequest.header("accept","application/json");
 

@@ -27,9 +27,6 @@ public class APITestCase1 {
 
         String blockHash = body.asString();
 
-        APITestData data = new APITestData();
-        data.setBlockHash(blockHash);
-
         Response transactionDetailsResponse;
         transactionDetailsResponse = transactionDetailsRequest.get("/api/block/" + blockHash);
 
