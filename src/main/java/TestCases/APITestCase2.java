@@ -12,86 +12,71 @@ public class APITestCase2 {
 
     public void SendRequest() {
 
+        System.out.println();
         System.out.println("Test case 2");
 
         RestAssured.baseURI = "https://blockstream.info/";
 
-        RequestSpecification request = RestAssured.given().relaxedHTTPSValidation();
-        RequestSpecification request1 = RestAssured.given().relaxedHTTPSValidation();
-        RequestSpecification request2 = RestAssured.given().relaxedHTTPSValidation();
-        RequestSpecification request3 = RestAssured.given().relaxedHTTPSValidation();
-        RequestSpecification request4 = RestAssured.given().relaxedHTTPSValidation();
+        RequestSpecification getBlockHashRequest = RestAssured.given().relaxedHTTPSValidation();
+        RequestSpecification getIndividualIdRequest = RestAssured.given().relaxedHTTPSValidation();
+        RequestSpecification ReuestFor100_200_300 = RestAssured.given().relaxedHTTPSValidation();
 
         APITestData data = new APITestData();
 
-        request.header("Content-Type", "application/json");
-        request.header("accept","application/json");
+        getBlockHashRequest.header("Content-Type", "application/json");
+        getBlockHashRequest.header("accept","application/json");
 
-        request1.header("Content-Type", "application/json");
-        request1.header("accept","application/json");
+        getIndividualIdRequest.header("Content-Type", "application/json");
+        getIndividualIdRequest.header("accept","application/json");
 
-        request2.header("Content-Type", "application/json");
-        request2.header("accept","application/json");
+        ReuestFor100_200_300.header("Content-Type", "application/json");
+        ReuestFor100_200_300.header("accept","application/json");
 
-        request3.header("Content-Type", "application/json");
-        request3.header("accept","application/json");
+        Response getBlcokHashResponse;
+        Response getIndividualIdResponse;
+        Response responseFor100;
+        Response responseFor200;
+        Response responseFor300;
 
-        request4.header("Content-Type", "application/json");
-        request4.header("accept","application/json");
-
-        Response response;
-        Response response1;
-        Response response2;
-        Response response3;
-        Response response4;
-
-        response = request.get("api/block-height/680000");
+        getBlcokHashResponse = getBlockHashRequest.get("api/block-height/680000");
 
 
-        ResponseBody body = response.getBody();
+        ResponseBody body = getBlcokHashResponse.getBody();
 
         String blockHash = body.asString();
-        System.out.println("block hash is" + blockHash);
 
-        response1= request1.get("/api/block/" + blockHash + "/txid/100");
-        System.out.println("response for 100 is");
+        getIndividualIdResponse= getIndividualIdRequest.get("/api/block/" + blockHash + "/txid/100");
 
-        ResponseBody body1 = response1.getBody();
+        ResponseBody body1 = getIndividualIdResponse.getBody();
 
         String s2 = body1.asString();
-        System.out.println(s2);
 
-        response1= request1.get("/api/block/" + blockHash + "/txid/200");
-        body1 = response1.getBody();
+        getIndividualIdResponse= getIndividualIdRequest.get("/api/block/" + blockHash + "/txid/200");
+        body1 = getIndividualIdResponse.getBody();
 
         String s3 = body1.asString();
-        System.out.println(s3);
 
-        response1= request1.get("/api/block/" + blockHash + "/txid/300");
-        body1 = response1.getBody();
+        getIndividualIdResponse= getIndividualIdRequest.get("/api/block/" + blockHash + "/txid/300");
+        body1 = getIndividualIdResponse.getBody();
 
         String s4 = body1.asString();
-        System.out.println(s4);
 
-        response2 = request2.get("api/tx/" + s2);
-        System.out.println(response2.getBody().asString());
-
-        response3 = request2.get("api/tx/" + s3);
-        response4 = request2.get("api/tx/" + s4);
+        responseFor100 = ReuestFor100_200_300.get("api/tx/" + s2);
+        responseFor200 = ReuestFor100_200_300.get("api/tx/" + s3);
+        responseFor300 = ReuestFor100_200_300.get("api/tx/" + s4);
 
 
-        ArrayList<String> countVinfor100 = response2.getBody().jsonPath().get("vin");
-        ArrayList<String> countVoutfor100 = response2.getBody().jsonPath().get("vout");
+        ArrayList<String> countVinfor100 = responseFor100.getBody().jsonPath().get("vin");
+        ArrayList<String> countVoutfor100 = responseFor100.getBody().jsonPath().get("vout");
 
-        ArrayList<String> countVinfor200 = response3.getBody().jsonPath().get("vin");
-        ArrayList<String> countVoutfor200 = response3.getBody().jsonPath().get("vout");
+        ArrayList<String> countVinfor200 = responseFor200.getBody().jsonPath().get("vin");
+        ArrayList<String> countVoutfor200 = responseFor200.getBody().jsonPath().get("vout");
 
-        ArrayList<String> countVinfor300 = response4.getBody().jsonPath().get("vin");
-        ArrayList<String> countVoutfor300 = response4.getBody().jsonPath().get("vout");
-
-        int totalvoutcount1 = countVoutfor100.size() + countVoutfor200.size() + countVoutfor300.size();
+        ArrayList<String> countVinfor300 = responseFor300.getBody().jsonPath().get("vin");
+        ArrayList<String> countVoutfor300 = responseFor300.getBody().jsonPath().get("vout");
 
         int totalIncount= countVinfor100.size() + countVinfor200.size() + countVinfor300.size();
+        int totalvoutcount1 = countVoutfor100.size() + countVoutfor200.size() + countVoutfor300.size();
 
         System.out.println(totalIncount);
         System.out.println(totalvoutcount1);
@@ -104,11 +89,6 @@ public class APITestCase2 {
         {
             System.out.println("TestCase2 Failed");
         }
-
-       // for ()
-
-
-
 
 
     }
