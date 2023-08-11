@@ -37,8 +37,6 @@ public class APITestCase1 {
         transactionDetailsRequest.header("accept","application/json");
         ResponseBody body1 = transactionDetailsResponse.getBody();
 
-        String s2 = body1.asString();
-
         System.out.println("Count is " + transactionDetailsResponse.getBody().jsonPath().get("tx_count").toString());
         String count = transactionDetailsResponse.getBody().jsonPath().get("tx_count").toString();
 
