@@ -32,16 +32,16 @@ public class APITestCase2 {
         ReuestFor100_200_300.header("Content-Type", "application/json");
         ReuestFor100_200_300.header("accept","application/json");
 
-        Response getBlcokHashResponse;
+        Response getBlockHashResponse;
         Response getIndividualIdResponse;
         Response responseFor100;
         Response responseFor200;
         Response responseFor300;
 
-        getBlcokHashResponse = getBlockHashRequest.get("api/block-height/680000");
+        getBlockHashResponse = getBlockHashRequest.get("api/block-height/680000");
 
 
-        ResponseBody body = getBlcokHashResponse.getBody();
+        ResponseBody body = getBlockHashResponse.getBody();
 
         String blockHash = body.asString();
 
@@ -89,7 +89,6 @@ public class APITestCase2 {
         {
             System.out.println("TestCase2 Failed");
         }
-
 
     }
 }
