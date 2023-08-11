@@ -49,21 +49,21 @@ public class APITestCase2 {
 
         ResponseBody body1 = getIndividualIdResponse.getBody();
 
-        String s2 = body1.asString();
+        String idFor100 = body1.asString();
 
         getIndividualIdResponse= getIndividualIdRequest.get("/api/block/" + blockHash + "/txid/200");
         body1 = getIndividualIdResponse.getBody();
 
-        String s3 = body1.asString();
+        String idFor200 = body1.asString();
 
         getIndividualIdResponse= getIndividualIdRequest.get("/api/block/" + blockHash + "/txid/300");
         body1 = getIndividualIdResponse.getBody();
 
-        String s4 = body1.asString();
+        String idFor300 = body1.asString();
 
-        responseFor100 = ReuestFor100_200_300.get("api/tx/" + s2);
-        responseFor200 = ReuestFor100_200_300.get("api/tx/" + s3);
-        responseFor300 = ReuestFor100_200_300.get("api/tx/" + s4);
+        responseFor100 = ReuestFor100_200_300.get("api/tx/" + idFor100);
+        responseFor200 = ReuestFor100_200_300.get("api/tx/" + idFor200);
+        responseFor300 = ReuestFor100_200_300.get("api/tx/" + idFor300);
 
 
         ArrayList<String> countVinfor100 = responseFor100.getBody().jsonPath().get("vin");
