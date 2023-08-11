@@ -1,8 +1,12 @@
 package org.example;
 
+import TestCases.APITestCase1;
+import TestCases.APITestCase2;
 import TestCases.TestCase1;
 import TestCases.TestCase2;
+import TestData.APITestData;
 import Utils.Driver;
+import com.beust.ah.A;
 import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -13,18 +17,11 @@ public class Main {
     public static void main(String[] args)
 
     {
-        WebDriver driver= Driver.InstantiateDriver();
+        APITestCase1 apiTestCase1 = new APITestCase1();
+        apiTestCase1.SendRequest();
 
-        driver.get(URL);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        APITestCase2 apiTestCase2 = new APITestCase2();
+        apiTestCase2.SendRequest();
 
-        TestCase1 testCase1 = new TestCase1();
-        testCase1.checkHeader(driver);
-
-        TestCase2 testCase2 = new TestCase2();
-        testCase2.parse(driver);
-
-        driver.close();
     }
 }
