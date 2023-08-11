@@ -75,13 +75,13 @@ public class APITestCase2 {
         ArrayList<String> countVinfor300 = responseFor300.getBody().jsonPath().get("vin");
         ArrayList<String> countVoutfor300 = responseFor300.getBody().jsonPath().get("vout");
 
-        int totalIncount= countVinfor100.size() + countVinfor200.size() + countVinfor300.size();
-        int totalvoutcount1 = countVoutfor100.size() + countVoutfor200.size() + countVoutfor300.size();
+        int totalVinCount= countVinfor100.size() + countVinfor200.size() + countVinfor300.size();
+        int totalVoutCount = countVoutfor100.size() + countVoutfor200.size() + countVoutfor300.size();
 
-        System.out.println(totalIncount);
-        System.out.println(totalvoutcount1);
+        System.out.println(totalVinCount);
+        System.out.println(totalVoutCount);
 
-        if (totalvoutcount1==4 && totalIncount==5)
+        if (totalVoutCount==4 && totalVinCount==5)
         {
             System.out.println("TestCase2 Passed");
         }
